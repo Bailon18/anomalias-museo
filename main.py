@@ -3,8 +3,7 @@ from pydantic import BaseModel
 import pandas as pd
 import joblib
 
-app = FastAPI(root_path="/docs")
-
+app = FastAPI()
 
 (model, threshold) = joblib.load('model/condiciones_ambientales_gmm.joblib')
 
