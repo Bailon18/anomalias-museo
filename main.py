@@ -16,9 +16,10 @@ class DataPoint(BaseModel):
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  
-    allow_methods=["*"], 
-    allow_headers=["*"],  
+    allow_origins=["http://localhost:5173", "http://miapp.com"],  # Agrega aquí tus dominios permitidos
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 @app.post("/api/predict")
