@@ -1,18 +1,25 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 import joblib
 
-app = FastAPI()
+app = FastAPI(root_path="/docs")
 
 (model, threshold) = joblib.load('model/condiciones_ambientales_gmm.joblib')
-
 
 class DataPoint(BaseModel):
     temp: float
     hum: float
     lum: float
 
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_methods=["*"], 
+    allow_headers=["*"],  
+)
 
 @app.post("/api/predict")
 async def predict_anomaly(data_point: DataPoint):
