@@ -16,7 +16,7 @@ class DataPoint(BaseModel):
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://vue-calendar-git-master-arielleyvas-projects.vercel.app/", "https://beamish-platypus-9e7524.netlify.app/"], 
+    allow_origins=["https://vue-calendar-git-master-arielleyvas-projects.vercel.app", "https://beamish-platypus-9e7524.netlify.app"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
